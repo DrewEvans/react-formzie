@@ -1,7 +1,16 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType, ReactElement } from 'react';
 
-interface Props {}
+interface Props {
+  children: ComponentType,
+  title?: string,  
+}
 
-export const Formzie = ({}: Props): ReactElement => {
-  return <form></form>;
+export const Formzie = ({children, title}: Props): ReactElement => {
+  
+  const renderChildren = (child : ComponentType) => {<>{child}</>} 
+  
+  return <div>
+    <h1>{title}</h1>
+    {children && renderChildren(children)}
+  </div>;
 };
