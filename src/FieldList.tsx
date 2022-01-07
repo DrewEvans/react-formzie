@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ChangeEventHandler, ReactElement } from 'react';
 import styled from 'styled-components';
 
 const colors = {
@@ -43,28 +43,37 @@ const FormField = styled.input`
 `;
 
 interface Props {
-  label: string;
+  labelHeader: string;
   type: string;
+  idNameHtml: string;
   value: string;
-  placeholder: string;
-  onChange?: Function;
+  placeholder?: string;
+  minLength?: number;
+  onChange: ChangeEventHandler<Element>;
+  collectValue: Function;
+  
 }
 
 export const FieldList = ({
-  label,
-  type,
-  value,
-  placeholder,
+  labelHeader, type, idNameHtml, value, onChange, minLength, placeholder
 }: Props): ReactElement => {
+
+// const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//   setValue(e.target.value);
+//   collectValue(value);
+// }
   return (
     <FormGroup>
-      <LabelHeader>{label}</LabelHeader>
+      <LabelHeader htmlFor={idNameHtml}>{labelHeader}</LabelHeader>
       <FormField
-        name={label}
+      	id={idNameHtml}
+        name={idNameHtml}
         type={type}
+        minLength={minLength}
         value={value}
+        aria-label={labelHeader}
         placeholder={placeholder}
-        // onChange={(e) => setValue(e.target.value)}
+        onChange={onChange}
       />
     </FormGroup>
   );
