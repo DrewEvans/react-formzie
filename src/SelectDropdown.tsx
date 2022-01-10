@@ -82,12 +82,13 @@ const DropdownItem = styled.li`
 interface Props {
   options: Array<any>;
   label: string;
-  collectValue: Function;
+  onClick: Function;
+  name: String;
 }
 
 export const SelectDropdown = ({
   options,
-  collectValue,
+  onClick,
   label,
 }: Props): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,9 +100,12 @@ export const SelectDropdown = ({
 
   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = (value: string) => () => {
-    setSelectedOption(value);
-    collectValue(value);
+  const onOptionClicked = (e : any) => {
+    
+    const target = e.target as HTMLTextAreaElement;
+
+    setSelectedOption(target.innerText);
+    onClick(e)
     setIsOpen(false);
   };
 
@@ -116,11 +120,13 @@ export const SelectDropdown = ({
         </DropdownHeader>
         {isOpen && (
           <DropdownListContainer>
-            <DropdownList>
+            <DropdownList role="listbox" id="pet-select">
               {options.map((option, i) => (
                 <DropdownItem
-                  onClick={onOptionClicked(option)}
-                  key={`selectDropdown-${i++}`}
+                value={option}
+                role="option"
+                onClick={onOptionClicked}
+                key={`selectDropdown-${i++}`}
                 >
                   {option}
                 </DropdownItem>
