@@ -94,9 +94,9 @@ export const SelectDropdown = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
-  useEffect(() => {
-    setSelectedOption(options[0]);
-  }, []);
+  // useEffect(() => {
+  //   setSelectedOption(options[0]);
+  // }, []);
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -114,7 +114,7 @@ export const SelectDropdown = ({
       <LabelHeader>{label}</LabelHeader>
       <SelectWrapper>
         <DropdownHeader onClick={toggling}>
-          {selectedOption || 'Choose an option'}
+          {selectedOption ? selectedOption : 'Choose an option'}
           {!isOpen && <span>{angleUp}</span>}
           {isOpen && <span>{angleDown}</span>}
         </DropdownHeader>
