@@ -1,17 +1,23 @@
-import React, { lazy } from "react";
-const InputField = lazy(() => import("./InputField"))
+import React from "react";
+import { InputField } from "./InputField";
+import styled from "styled-components"
 
-
+const FormContainer = styled.form`
+display: flex;
+flex-direction: column;
+width: 270px;
+margin: 0.5rem 2rem;
+padding: 0.5rem;
+`
 interface props {
  children: JSX.Element[],
  title?: string
 }
 
-
-const Form = React.memo(({ children, title }: props ) => {
+const Formzie = React.memo(({ children, title }: props ) => {
 
 	return (
-		<form className="formzie">		
+		<FormContainer className="formzie">		
 			<h1>{title}</h1>
 			{children.map((child : JSX.Element , i : number) => {
 				const { 
@@ -65,10 +71,9 @@ const Form = React.memo(({ children, title }: props ) => {
 				)
 			} else { return <span>...</span>}
 			})}
-      
-		</form>
+		</FormContainer>
 	);
 })
 
-export {Form};
+export {Formzie};
 
