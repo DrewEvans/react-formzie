@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled, { keyframes } from 'styled-components';
 
-const closeCross = <FontAwesomeIcon icon={faTimes} />;
+const closeCross = <FontAwesomeIcon className='modal-cross' icon={faTimes} />;
 
 const ModalWrapper = styled.div`
 background-color: #7a7a7a9c;

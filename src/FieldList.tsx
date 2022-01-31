@@ -58,10 +58,6 @@ export const FieldList = ({
   labelHeader, type, idNameHtml, value, onChange, minLength, placeholder
 }: Props): ReactElement => {
 
-// const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//   setValue(e.target.value);
-//   collectValue(value);
-// }
   return (
     <FormGroup>
       <LabelHeader htmlFor={idNameHtml}>{labelHeader}</LabelHeader>

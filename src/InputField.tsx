@@ -90,8 +90,6 @@ transition: all 0.2s ease-in-out;
  }
 `
 
-
-
 interface props {
     controlType : string, 
     labelHeader? : string, 
@@ -144,6 +142,7 @@ const InputField = ({controlType, labelHeader, type, idNameHtml, value, onChange
         </>
     )
 }
+
     if(controlType === "submit"){
      return(   
         <>
@@ -151,7 +150,6 @@ const InputField = ({controlType, labelHeader, type, idNameHtml, value, onChange
         </>
     )
 }
-    
     
     return (
         <div>

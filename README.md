@@ -1,5 +1,88 @@
-# WIP - Still in Pre-Prerelease
+# Formzie
 
-# Formzie - React Component Libray
+![formzie-logo](https://github.com/DrewEvans/react-formzie/blob/main/src/assets/logo.svg)
+
+## Formzie - React Component Libray
 
 ## Quick Form Builds Making Life A Little More Easy
+
+### Intro
+
+This was a project was based is based on one of the deliverables for [openclassrooms](https://openclassrooms.com/). It then resulted into this very basic form component, with a few handy extra components.
+
+- Popup Modal
+- Dynamic form input field rendering
+- Custom select dropdown
+
+**End goal:** To have a library that can cover those snazzy form needs and reduce those lines!
+
+please don't confuse this with the greats that are already smashing it!
+
+### Install
+
+#### `npm -i react-formzie`
+
+### Quick Start
+
+#### 1. Import formzie component
+
+`import {Formzie, InputField, Modal} from 'react-formzie'`
+
+#### 2. Basic Implementation
+
+```javascript
+import React, { useState } from 'react';
+import { Formzie, InputField, Modal } from 'react-formzie';
+
+function app() {
+  const [values, setValues] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => {
+    if (!isOpen) {
+      setIsOpen(true);
+    }
+    setIsOpen(false);
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleOpen();
+  };
+
+  return (
+    <>
+      <Formzie>
+        <InputField
+          controlType={'input'}
+          labelHeader="First Name"
+          type="text"
+          idNameHtml="firstName"
+          onChange={handleChange}
+        />
+        <InputField
+          controlType={'input'}
+          labelHeader="Last Name"
+          type="text"
+          idNameHtml="lastName"
+          onChange={handleChange}
+        />
+        <InputField
+          controlType={'submit'}
+          onClick={handleSubmit}
+          buttonText="Submit"
+        />
+      </Formzie>
+      {isOpen && (
+        <Modal onClick={handleOpen}>
+          <p>Some Content</p>
+        </Modal>
+      )}
+    </>
+  );
+}
+```
