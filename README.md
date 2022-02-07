@@ -1,14 +1,12 @@
-# Formzie
-
 ![formzie-logo](https://github.com/DrewEvans/react-formzie/blob/main/src/assets/logo.svg)
 
 ## Formzie - React Component Libray
 
-## Quick Form Builds Making Life A Little More Easy
+#### Quick Form Builds Making Life A Little More Easy
 
 ### Intro
 
-This was a project was based is based on one of the deliverables for [openclassrooms](https://openclassrooms.com/). It then resulted into this very basic form component, with a few handy extra components.
+This was a project was based and is based on one of the deliverables for [openclassrooms](https://openclassrooms.com/). It then resulted into this very basic form component, with a few handy extra components.
 
 - Popup Modal
 - Dynamic form input field rendering

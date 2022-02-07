@@ -100,12 +100,14 @@ interface props {
     type?:string, 
     minLength?: number, 
     value?: string, 
+    min?: string, 
+    max?: string, 
     placeholder?: string, 
     buttonText?: string
 }
 
-const InputField = ({controlType, labelHeader, type, idNameHtml, value, onChange, onClick, minLength, placeholder, options, buttonText}: props) => {
-    
+const InputField = ({controlType, labelHeader, type, idNameHtml, value, onChange, onClick, min, max, minLength, placeholder, options, buttonText}: props) => {
+  
     if(controlType === "select"){
         return (
             <>
@@ -127,16 +129,18 @@ const InputField = ({controlType, labelHeader, type, idNameHtml, value, onChange
 
     if(controlType === "input"){
      return(   
-        <>
+        <>      
             <label className="input-group" htmlFor={idNameHtml}><LabelHeader>{labelHeader}</LabelHeader></label>
                 <Input
                 id={idNameHtml}
                 name={idNameHtml}
                 type={type}
-                minLength={minLength}
-                value={value}
+                min={min} 
+                max={max}
                 aria-label={labelHeader}
                 placeholder={placeholder}
+                minLength={minLength}
+                value={value}
                 onChange={onChange}
                 />
         </>
