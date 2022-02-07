@@ -34,19 +34,23 @@ import { Formzie, InputField, Modal } from 'react-formzie';
 
 function app() {
   const [values, setValues] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); //default is set to false
 
+  // Handle the open close state of the modal display 
   const handleOpen = () => {
     if (!isOpen) {
       setIsOpen(true);
     }
     setIsOpen(false);
   };
+
+  // Dynamic state change on user input 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
 
+  //handle user submit logic & display modal if isOpen is false  
   const handleSubmit = (e) => {
     e.preventDefault();
     handleOpen();
